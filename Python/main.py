@@ -69,3 +69,44 @@ savings.display_info()
 current.withdraw(4500)   # Denied due to minimum balance
 current.withdraw(3000)   # Allowed
 current.display_info()
+
+#2. Employee Management 
+
+#Base Class
+class Employee:
+    def __init__(self,name,salary):
+        self.name = name
+        self.salary = salary
+    def calulate_salary(self):
+        return self.salary
+    
+#Sub Class
+class RegularEmployee(Employee):
+    def __init__(self,name,salary,bonus):
+        super().__init__(name,salary)
+        self.bonus = bonus
+    def calulate_salary(self):
+        return self.salary + self.bonus
+
+class ContractEmployee(Employee):
+    def __init__(self,name,salary,contract_duration):
+        super().__init__(name,salary)
+        self.contract_duration = contract_duration
+    def calulate_salary(self):
+        return self.salary * self.contract_duration
+
+class Manager(Employee):   
+    def __init__(self,name,salary,team_size):
+        super().__init__(name,salary)
+        self.team_size = team_size
+    def calulate_salary(self):
+        return self.salary + (self.team_size * 1000)
+
+Regular = RegularEmployee("Alice",50000,5000)
+Contract = ContractEmployee("Bob",30000,12)
+Manager = Manager("Charlie",70000,5)
+
+print(f"{Regular.name}'s Salary: {Regular.calulate_salary()}")
+print(f"{Contract.name}'s Salary: {Contract.calulate_salary()}")
+print(f"{Manager.name}'s Salary: {Manager.calulate_salary()}")  
+
