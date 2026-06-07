@@ -80,21 +80,21 @@ class Employee:
     def calulate_salary(self):
         return self.salary
     
-#Sub Class
+#Sub Class:RegularEmployee
 class RegularEmployee(Employee):
     def __init__(self,name,salary,bonus):
         super().__init__(name,salary)
         self.bonus = bonus
     def calulate_salary(self):
         return self.salary + self.bonus
-
+#Sub Class: ContractEmployee
 class ContractEmployee(Employee):
     def __init__(self,name,salary,contract_duration):
         super().__init__(name,salary)
         self.contract_duration = contract_duration
     def calulate_salary(self):
         return self.salary * self.contract_duration
-
+#Sub Class : Manager
 class Manager(Employee):   
     def __init__(self,name,salary,team_size):
         super().__init__(name,salary)
@@ -109,4 +109,44 @@ Manager = Manager("Charlie",70000,5)
 print(f"{Regular.name}'s Salary: {Regular.calulate_salary()}")
 print(f"{Contract.name}'s Salary: {Contract.calulate_salary()}")
 print(f"{Manager.name}'s Salary: {Manager.calulate_salary()}")  
+
+
+#3. Vehicle Rental
+
+#Base Class
+class Vehicle:
+    def __init__(self, model, rental_rate):
+        self.mode = model
+        self.rental_rate = rental_rate
+    def calculate_rental(self):
+        return self.rental_rate
+#Subclass : Car
+class Car(Vehicle):
+    def __init__(self, model, rental_rate, seating_capacity):
+        super().__init__(model, rental_rate)
+        self.seating_capacity = seating_capacity
+    def calculate_rental(self):
+        return self.rental_rate * self.seating_capacity
+#Subclass : Bike
+class Bike(Vehicle):
+    def __init__(self, model, rental_rate, engine_capacity):
+        super().__init__(model, rental_rate)
+        self.engine_capacity = engine_capacity
+    def calculate_rental(self):
+        return self.rental_rate * (self.engine_capacity / 100)
+#Subclass : Truck
+class Truck(Vehicle):
+    def __init__(self, model, rental_rate, load_capacity):
+        super().__init__(model, rental_rate)
+        self.load_capacity = load_capacity
+    def calculate_rental(self):
+        return self.rental_rate * (self.load_capacity / 1000)
+    
+Car1 = Car("Sedan", 50, 5)
+Bike1 = Bike("Sport", 30, 600)
+Truck1 = Truck("Lorry", 100, 5000)  
+
+print(f"{Car1.mode} Rental Cost: {Car1.calculate_rental()}")
+print(f"{Bike1.mode} Rental Cost: {Bike1.calculate_rental()}")
+print(f"{Truck1.mode} Rental Cost: {Truck1.calculate_rental()}")
 
